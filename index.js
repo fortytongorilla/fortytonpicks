@@ -213,8 +213,8 @@ const loadPage = function(arr) {
         html = `
         <tr>
         <th scope="col"></th>
-        <th scope="col"><button class="btn btn-lg btn-primary homebtn${i}" type="button">${arr[i][5][0]} ${res[i][4][0]}</button></th>
-        <th scope="col"><button class="btn btn-lg btn-primary awaybtn${i}" type="button">${arr[i][5][1]} ${res[i][4][2]}</button></th>
+        <th scope="col"><button class="btn btn-lg btn-primary homebtn${i}" type="button">${arr[i][5][0]} ${arr[i][4][0]}</button></th>
+        <th scope="col"><button class="btn btn-lg btn-primary awaybtn${i}" type="button">${arr[i][5][1]} ${arr[i][4][2]}</button></th>
         <th scope="col"></th>
       </tr>`
     //   console.log(arr[i]);
