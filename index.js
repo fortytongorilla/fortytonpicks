@@ -15,13 +15,27 @@ btnContainer.addEventListener('click', function(e) {
     const buttonNum = button.classList[3];
     const index = buttonNum.slice(buttonNum.indexOf('n')+1);
     const homebtn = document.querySelector(`.homebtn${index}`);
-    const homeTeam = homebtn.textContent.split(' ').join('-');
+    const homeTeam = createTeamName(homebtn);
     const awaybtn = document.querySelector(`.awaybtn${index}`);
-    const awayTeam = awaybtn.textContent.split(' ').join('-');
-    // console.log(typeof(homeTeam));
+    const awayTeam = createTeamName(awaybtn)
+    // console.log(homeTeam, awayTeam);
     getStats(homeTeam, awayTeam)
     previousBtn = index;
-})
+});
+
+
+const createTeamName = str => {
+  // console.log(str);
+  let teamName = '';
+  const team = [];
+  const btn = str.textContent.split(' ')
+  for (const item of btn) {
+    if (!item.includes('+') && !item.includes('-'))
+    team.push(item);
+  };
+  teamName += team.join('-')
+  return teamName;
+}
 
 
 
@@ -157,7 +171,7 @@ const loadStats = function(h,a, hn, an) {
 <tr class="table-dark">
   <th scope="row">Oppenent Red Zone Scoring %</th>
   <td>${home['Opp RZ Scoring % (TD)']}</td>
-  <td>${home['Opp RZ Scoring % (TD)']}</td>
+  <td>${away['Opp RZ Scoring % (TD)']}</td>
   <td></td>
 </tr>
 <tr class="table-lite">
