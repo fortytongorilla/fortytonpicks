@@ -199,9 +199,9 @@ const loadStats = function(h,a, hn, an) {
     const page = await fetch(lineURL);
     const res = await page.json();
     for (let i=0; i < res.length; i++) {
-        if (res[i][4][0] = '')  return;
-        // console.log(res[i][0]);
-        statsArr.push(res[i]);
+        if (res[i][4][0].includes('+') || res[i][4][0].includes('-')) {
+            statsArr.push(res[i]);
+        }
     }
     // statsArr.shift();
     loadPage(statsArr);
@@ -213,8 +213,8 @@ const loadPage = function(arr) {
         html = `
         <tr>
         <th scope="col"></th>
-        <th scope="col"><button class="btn btn-lg btn-primary homebtn${i}" type="button">${arr[i][5][0]}</button></th>
-        <th scope="col"><button class="btn btn-lg btn-primary awaybtn${i}" type="button">${arr[i][5][1]}</button></th>
+        <th scope="col"><button class="btn btn-lg btn-primary homebtn${i}" type="button">${arr[i][5][0]} ${res[i][4][0]}</button></th>
+        <th scope="col"><button class="btn btn-lg btn-primary awaybtn${i}" type="button">${arr[i][5][1]} ${res[i][4][2]}</button></th>
         <th scope="col"></th>
       </tr>`
     //   console.log(arr[i]);
