@@ -1,34 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fortyton Football</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
-    <link defer rel="stylesheet" href="style.css">
-    <script src="index.js" type="module" charset="utf-8"></script>
-  </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <body>
-    <main class="container">
-    <h1>Fortyton Football</h1>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="css/iconfonts.css">
 
-    <div class="progress hidden head">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-      </div>
-    <table class="table table-hover">
-        <thead class="teamHeader">
-          <!-- <tr>
-            <th scope="col"></th>
-            <th scope="col"><button class="btn btn-lg btn-primary homebtn" type="button">Home</button></th>
-            <th scope="col"><button class="btn btn-lg btn-primary awaybtn" type="button">Away</button></th>
-            <th scope="col"></th>
-          </tr> -->
-        </thead>
-        <tbody class="statbody">
-        </tbody>
-      </table>
+        <link rel="stylesheet" href="css/icon-font.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <script defer type="module" src="index.js"></script>
 
-    </main>
-  </body>
+        <title>Forty Ton Football Picks</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__logo-box">
+                <img src="img/logo-white.png" alt="Home Page Logo" class="header__logo">
+            </div>
+            <div class="header__header-text-box">
+                <h1 class="heading-primary">
+                    <span class="heading-primary--main">Forty-Ton Football Picks</span>
+                    <span class="heading-primary--sub">game day odds</span>
+                </h1>
+                    <a href="#getOdds" class="btn btn--letsGo btn--animated">Week Match Ups</a>
+            </div>
+        </header>
+        <main>
+            <section class="section-about">
+                <div class="u-center-text u-margin-bottom-3">
+                    <h2 class="heading-secondary" id="getOdds">
+                        This weeks lineups
+                    </h2>
+                </div>
+                <div class="statsComp">
+                    <div class="statsComp__row rowInsert" id="tableID">
+                    </div>
+                    <table class="table table-hover statsComp__table">
+                                <div class="resetbtnblock">
+                                    <button class="btn reset">Reset</button>
+                                </div>
+                            <tbody class="statbody">
+                            </tbody>
+                          </table>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>

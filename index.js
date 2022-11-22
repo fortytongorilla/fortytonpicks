@@ -1,34 +1,46 @@
 const lineURL = `https://fortytonfootballget.vercel.app/loadpage`;
 const statsURL = `https://fortytonfootballget.vercel.app/searchline/`;
 
-const rowHead = document.querySelector('.teamHeader');
+
+const btnContInsert = document.querySelector('.rowInsert');
 const statbod = document.querySelector('.statbody');
-const btnContainer = document.querySelector('.teamHeader');
+const btnContainer = document.querySelector('.section-about');
+const btnReset = document.querySelector('.resetbtnblock');
+
+
+
+
+btnReset.addEventListener('click', () => {
+    console.log('ballz deep');
+    btn.classList.add('u-hide');
+    document.getElementById('rowIDS').style.opacity = "0"
+})
 
 const statsArr = [];
 let previousBtn;
 
-btnContainer.addEventListener('click', function(e) {
+btnContInsert.addEventListener('click', function(e) {
     previousBtn;
     statbod.textContent = '';
     const button = e.target;
-    const buttonNum = button.classList[3];
+    const buttonNum = button.classList[2];
+    const teamName = button.textContent.trim().split(' ');
+    console.log(teamName);
     const index = buttonNum.slice(buttonNum.indexOf('n')+1);
     const homebtn = document.querySelector(`.homebtn${index}`);
     const homeTeam = createTeamName(homebtn);
     const awaybtn = document.querySelector(`.awaybtn${index}`);
     const awayTeam = createTeamName(awaybtn)
-    // console.log(homeTeam, awayTeam);
+    console.log(homeTeam, awayTeam);
     getStats(homeTeam, awayTeam)
     previousBtn = index;
 });
 
 
 const createTeamName = str => {
-  // console.log(str);
   let teamName = '';
   const team = [];
-  const btn = str.textContent.split(' ')
+  const btn = str.textContent.trim().split(' ')
   for (const item of btn) {
     if (!item.includes('+') && !item.includes('-'))
     team.push(item);
@@ -64,6 +76,7 @@ async function getStats(h, a,) {
 const loadStats = function(h,a, hn, an) {
     const home = h[hn]
     const away = a[an]
+    console.log(home, 'followed by', away);
     let html = ``;
     html = `
     <tr class="table-lite">
@@ -225,14 +238,18 @@ const loadPage = function(arr) {
     let html = ``;
     for (let i=0; i < arr.length;i++) {
         html = `
-        <tr>
-        <th scope="col"></th>
-        <th scope="col"><button class="btn btn-lg btn-primary homebtn${i}" type="button">${arr[i][5][0]} ${arr[i][4][0]}</button></th>
-        <th scope="col"><button class="btn btn-lg btn-primary awaybtn${i}" type="button">${arr[i][5][1]} ${arr[i][4][2]}</button></th>
-        <th scope="col"></th>
-      </tr>`
+        <div class="statsComp__row--row row">
+        <div class="col-1-of-2"><button class="btn btn__homeTeam homebtn${i}">
+            ${arr[i][5][0]} ${arr[i][4][0]}
+        </button></div>
+        <div class="col-1-of-2"><button class="btn btn__homeTeam awaybtn${i}">
+        ${arr[i][5][1]} ${arr[i][4][2]}
+        </button></div>
+    </div>`
+
+    // statsComp__table statsComp__table--buttons col-1-of-2
     //   console.log(arr[i]);
-      rowHead.insertAdjacentHTML('beforeend', html)
+      btnContInsert.insertAdjacentHTML('beforeend', html)
     };
 }
 
