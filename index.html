@@ -5,47 +5,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="css/iconfonts.css">
 
         <link rel="stylesheet" href="css/icon-font.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
         <script defer type="module" src="index.js"></script>
 
-        <title>Forty Ton Football Picks</title>
+        <title>Forty-Ton Football Picks</title>
     </head>
     <body>
         <header class="header">
-            <div class="header__logo-box">
-                <img src="img/logo-white.png" alt="Home Page Logo" class="header__logo">
-            </div>
-            <div class="header__header-text-box">
+            <div class="header__logo-box"><img src="img/logo-white.png" alt="brand logo" class="header__logo"></div>
+            <div class="header__text-box">
                 <h1 class="heading-primary">
-                    <span class="heading-primary--main">Forty-Ton Football Picks</span>
+                    <span class="heading-primary--main">Forty-ton football picks</span>
                     <span class="heading-primary--sub">game day odds</span>
                 </h1>
-                    <a href="#getOdds" class="btn btn--letsGo btn--animated">Week Match Ups</a>
+                <a href="#getOdds" class="btn btn--purple">game day line ups</a>
             </div>
         </header>
-        <main>
-            <section class="section-about">
-                <div class="u-center-text u-margin-bottom-3">
-                    <h2 class="heading-secondary" id="getOdds">
-                        This weeks lineups
-                    </h2>
+        <section class="section-about">
+            <div class="u-center-text u-margin-bottom-3">
+                <h2 class="heading-secondary" id="getOdds">
+                    This weeks lineups
+                </h2>
+                <div class="resetbtnblock">
+                    <button class="btn btn--reset btn--purple btn__reset u-hide">Reset</button>
                 </div>
-                <div class="statsComp">
-                    <div class="statsComp__row rowInsert" id="tableID">
+            </div>
+            <div class="statsComp">
+                <div class="statsComp__row rowInsert" id="tableID">
+                    <div class="statsComp__row--row row">
                     </div>
-                    <table class="table table-hover statsComp__table">
-                                <div class="resetbtnblock">
-                                    <button class="btn reset">Reset</button>
-                                </div>
-                            <tbody class="statbody">
-                            </tbody>
-                          </table>
                 </div>
-            </section>
-        </main>
+                <table class="table table-hover statsComp__table u-hide">
+                        <tbody class="statbody">
+                        </tbody>
+                </table>
+            </div>
     </body>
 </html>

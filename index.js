@@ -5,35 +5,35 @@ const statsURL = `https://fortytonfootballget.vercel.app/searchline/`;
 const btnContInsert = document.querySelector('.rowInsert');
 const statbod = document.querySelector('.statbody');
 const btnContainer = document.querySelector('.section-about');
-const btnReset = document.querySelector('.resetbtnblock');
-
+const btnReset = document.querySelector('.btn__reset');
+const btnsAll = document.getElementsByClassName('btn__homeTeam')
 
 
 
 btnReset.addEventListener('click', () => {
-    console.log('ballz deep');
-    btn.classList.add('u-hide');
-    document.getElementById('rowIDS').style.opacity = "0"
+    document.getElementById('tableID').style.opacity = "1"
+    document.querySelector('.statsComp__table').classList.toggle('u-hide');
+    btnReset.classList.toggle('u-hide');
+    btnsAll.disabled = false;
 })
 
 const statsArr = [];
-let previousBtn;
+
 
 btnContInsert.addEventListener('click', function(e) {
-    previousBtn;
+    btnsAll.disabled = true
     statbod.textContent = '';
     const button = e.target;
     const buttonNum = button.classList[2];
     const teamName = button.textContent.trim().split(' ');
-    console.log(teamName);
+    // console.log(teamName);
     const index = buttonNum.slice(buttonNum.indexOf('n')+1);
     const homebtn = document.querySelector(`.homebtn${index}`);
     const homeTeam = createTeamName(homebtn);
     const awaybtn = document.querySelector(`.awaybtn${index}`);
     const awayTeam = createTeamName(awaybtn)
-    console.log(homeTeam, awayTeam);
-    getStats(homeTeam, awayTeam)
-    previousBtn = index;
+    // console.log(homeTeam, awayTeam);
+    getStats(homeTeam, awayTeam);
 });
 
 
@@ -48,8 +48,6 @@ const createTeamName = str => {
   teamName += team.join('-')
   return teamName;
 }
-
-
 
 // accordContainer.addEventListener("click", function(e) {
 //     e.preventDefault();
@@ -76,13 +74,16 @@ async function getStats(h, a,) {
 const loadStats = function(h,a, hn, an) {
     const home = h[hn]
     const away = a[an]
-    console.log(home, 'followed by', away);
+    const homeName = hn.replace('-', ' ')
+    const awayName = an.replace('-', ' ')
+
+    // console.log(displayHomeName);
     let html = ``;
     html = `
     <tr class="table-lite">
     <th scope="row">Offense</th>
-    <td></td>
-    <td></td>
+    <td>${homeName}</td>
+    <td>${awayName}</td>
     <td></td>
   </tr>
   <tr class="table-light">
@@ -217,7 +218,10 @@ const loadStats = function(h,a, hn, an) {
   <td>${away['Takeaways/Game']}</td>
   <td></td>
 </tr>`;
-    statbod.insertAdjacentHTML('beforeend', html)
+    statbod.insertAdjacentHTML('beforeend', html);
+    document.getElementById('tableID').style.opacity = "0"
+    document.querySelector('.statsComp__table').classList.toggle('u-hide');
+    btnReset.classList.toggle('u-hide');
     // console.log(home);
 };
 // getStats();
